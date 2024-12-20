@@ -19,6 +19,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
+// app.js
+const imageController = require('./controllers/imageController');
+app.use('/images', express.static('public/images'));
+app.use('/nft', imageController);
 app.use('/users', userController);
 app.use('/quests', questController);
 app.use('/marketplace', marketplaceController);
